@@ -1,0 +1,25 @@
+version: 2
+
+sources: 
+  - name: finance
+    description: "Dados brutos do sistema financeiro"
+    schema: data_set_financial
+    loader: bigquery
+    loaded_at_field: data_carga
+
+
+    tables:
+      - name: dados_financeiros
+        description: "Tabelas com lançamentos financeiros"
+        columns:
+          - name: transaction_id
+            description: "Identificador único da transação"
+          - name: amount
+            description: "Valor da transação"
+          - name: transaction_date
+            description: "Data da transação"
+          - name: account_id
+            description: "Identificador da conta associada à transação"
+            tests:
+              - not_null
+              - unique
